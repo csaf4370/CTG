@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 50, 1, 50 )
@@ -23,6 +23,12 @@ size = Vector3( 3, 3, 3 )
 
 [sub_resource type="CubeMesh" id=12]
 
+[sub_resource type="BoxShape" id=16]
+extents = Vector3( 2.5, 0.25, 2.5 )
+
+[sub_resource type="CubeMesh" id=17]
+size = Vector3( 5, 0.5, 5 )
+
 [node name="Spatial" type="Spatial"]
 
 [node name="OmniLight" type="OmniLight" parent="."]
@@ -30,10 +36,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12656, 8.98388 )
 omni_range = 5.359
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.0239501, 0.246306, -0.968896, 0.00608656, 0.969192, 0.24623, 0.999695, 0, -0.0247114, -8.15074, 2.01308, 0 )
+transform = Transform( -0.0239501, 0.246306, -0.968896, 0.00608656, 0.969192, 0.246231, 0.999695, 7.91866e-09, -0.0247114, -8.15074, 3.46714, 0 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.44707, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.86125, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.24898, 0 )
@@ -46,10 +52,11 @@ skeleton = NodePath("../../WippenFuss/Cone")
 material/0 = null
 
 [node name="Ball" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 6.03864, 0 )
+transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 8.77364, 0 )
 physics_material_override = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
+transform = Transform( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
 shape = SubResource( 9 )
 
 [node name="Ball" type="MeshInstance" parent="Ball"]
@@ -59,7 +66,7 @@ skeleton = NodePath("../../StaticBody/CollisionShape")
 material/0 = null
 
 [node name="WippenFuss" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6.66345, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497234, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="WippenFuss"]
 transform = Transform( 1, 0, 0, 0, 0.682713, -0.730687, 0, 0.730687, 0.682713, 0, -0.499059, 0 )
@@ -80,4 +87,16 @@ shape = SubResource( 13 )
 [node name="MeshInstance" type="MeshInstance" parent="RigidBody2"]
 mesh = SubResource( 12 )
 skeleton = NodePath("../..")
+material/0 = null
+
+[node name="RigidBody" type="RigidBody" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 2.79766, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 0.783314, 0.621626, 0, -0.621626, 0.783314, 0, 0, 0 )
+shape = SubResource( 16 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 0.793289, 0.608844, 0, -0.608844, 0.793289, 0, 0, 0 )
+mesh = SubResource( 17 )
 material/0 = null
