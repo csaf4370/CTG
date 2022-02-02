@@ -13,15 +13,15 @@ radius = 1.13
 
 [sub_resource type="SphereMesh" id=8]
 
+[sub_resource type="BoxShape" id=13]
+
+[sub_resource type="CubeMesh" id=12]
+
 [sub_resource type="BoxShape" id=14]
 extents = Vector3( 1.5, 1.5, 1.5 )
 
 [sub_resource type="CubeMesh" id=15]
 size = Vector3( 3, 3, 3 )
-
-[sub_resource type="BoxShape" id=13]
-
-[sub_resource type="CubeMesh" id=12]
 
 [sub_resource type="BoxShape" id=16]
 extents = Vector3( 2.5, 0.25, 2.5 )
@@ -48,11 +48,11 @@ shape = SubResource( 10 )
 [node name="floor" type="MeshInstance" parent="StaticBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.43922, 0 )
 mesh = SubResource( 5 )
-skeleton = NodePath("../../WippenFuss/Cone")
+skeleton = NodePath("../../HingeJoint/WippenFuss/Cone")
 material/0 = null
 
 [node name="Ball" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 8.77364, 0 )
+transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 8.77364, 1.689 )
 physics_material_override = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
@@ -63,19 +63,6 @@ shape = SubResource( 9 )
 transform = Transform( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
 mesh = SubResource( 8 )
 skeleton = NodePath("../../StaticBody/CollisionShape")
-material/0 = null
-
-[node name="WippenFuss" type="StaticBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497234, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="WippenFuss"]
-transform = Transform( 1, 0, 0, 0, 0.682713, -0.730687, 0, 0.730687, 0.682713, 0, -0.499059, 0 )
-shape = SubResource( 14 )
-
-[node name="Cone" type="MeshInstance" parent="WippenFuss"]
-transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -0.475029, 0 )
-mesh = SubResource( 15 )
-skeleton = NodePath("../..")
 material/0 = null
 
 [node name="RigidBody2" type="RigidBody" parent="."]
@@ -89,14 +76,33 @@ mesh = SubResource( 12 )
 skeleton = NodePath("../..")
 material/0 = null
 
-[node name="RigidBody" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 2.79766, 0 )
+[node name="HingeJoint" type="HingeJoint" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15017, -0.135597 )
+nodes/node_a = NodePath("WippenFuss")
+nodes/node_b = NodePath("Wippe")
+angular_limit/enable = true
 
-[node name="CollisionShape" type="CollisionShape" parent="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 0.783314, 0.621626, 0, -0.621626, 0.783314, 0, 0, 0 )
+[node name="WippenFuss" type="StaticBody" parent="HingeJoint"]
+transform = Transform( 1, -2.98023e-08, 7.45058e-09, -1.49012e-08, 1, 9.31323e-10, -7.45058e-09, -4.65661e-10, 1, 0, -1.65293, 0.135597 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HingeJoint/WippenFuss"]
+transform = Transform( 1, 0, 0, 0, 0.682713, -0.730687, 0, 0.730687, 0.682713, 0, -0.499059, 0 )
+shape = SubResource( 14 )
+
+[node name="Cone" type="MeshInstance" parent="HingeJoint/WippenFuss"]
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, -0.475029, 0 )
+mesh = SubResource( 15 )
+skeleton = NodePath("../../..")
+material/0 = null
+
+[node name="Wippe" type="RigidBody" parent="HingeJoint"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451762, 0.135597 )
+
+[node name="CollisionShape" type="CollisionShape" parent="HingeJoint/Wippe"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 16 )
 
-[node name="MeshInstance" type="MeshInstance" parent="RigidBody"]
-transform = Transform( 1, 0, 0, 0, 0.793289, 0.608844, 0, -0.608844, 0.793289, 0, 0, 0 )
+[node name="MeshInstance" type="MeshInstance" parent="HingeJoint/Wippe"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = null
