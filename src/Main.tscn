@@ -36,7 +36,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12656, 8.98388 )
 omni_range = 5.359
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( -0.0239501, 0.246306, -0.968896, 0.00608656, 0.969192, 0.246231, 0.999695, 7.91866e-09, -0.0247114, -8.15074, 3.46714, 0 )
+transform = Transform( -0.985675, -0.0356877, 0.164836, 0.00608656, 0.969192, 0.246231, -0.168545, 0.243707, -0.955091, -0.34845, 3.46714, -8.5545 )
 
 [node name="StaticBody" type="StaticBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.86125, 0 )
@@ -52,7 +52,7 @@ skeleton = NodePath("../../HingeJoint/WippenFuss/Cone")
 material/0 = null
 
 [node name="Ball" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0, 8.77364, 1.689 )
+transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 1.41278, 8.77364, 1.689 )
 physics_material_override = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
@@ -67,6 +67,7 @@ material/0 = null
 
 [node name="RigidBody2" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -7 )
+visible = false
 
 [node name="CollisionShape" type="CollisionShape" parent="RigidBody2"]
 shape = SubResource( 13 )
@@ -83,7 +84,7 @@ nodes/node_b = NodePath("Wippe")
 angular_limit/enable = true
 
 [node name="WippenFuss" type="StaticBody" parent="HingeJoint"]
-transform = Transform( 1, -2.98023e-08, 7.45058e-09, -1.49012e-08, 1, 9.31323e-10, -7.45058e-09, -4.65661e-10, 1, 0, -1.65293, 0.135597 )
+transform = Transform( -5.1162e-08, -4.6566e-10, 1, -1.49012e-08, 1, 9.31323e-10, -1, 2.98023e-08, -5.1162e-08, 0, -1.65293, 0.135597 )
 
 [node name="CollisionShape" type="CollisionShape" parent="HingeJoint/WippenFuss"]
 transform = Transform( 1, 0, 0, 0, 0.682713, -0.730687, 0, 0.730687, 0.682713, 0, -0.499059, 0 )
@@ -99,10 +100,8 @@ material/0 = null
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.451762, 0.135597 )
 
 [node name="CollisionShape" type="CollisionShape" parent="HingeJoint/Wippe"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 16 )
 
 [node name="MeshInstance" type="MeshInstance" parent="HingeJoint/Wippe"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 mesh = SubResource( 17 )
 material/0 = null
