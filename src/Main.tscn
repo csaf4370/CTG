@@ -1,4 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://PID-Motor.gd" type="Script" id=1]
 
 [sub_resource type="BoxShape" id=10]
 extents = Vector3( 50, 1, 50 )
@@ -24,10 +26,10 @@ extents = Vector3( 1.5, 1.5, 1.5 )
 size = Vector3( 3, 3, 3 )
 
 [sub_resource type="BoxShape" id=16]
-extents = Vector3( 2.5, 0.25, 2.5 )
+extents = Vector3( 5, 0.25, 5 )
 
 [sub_resource type="CubeMesh" id=17]
-size = Vector3( 5, 0.5, 5 )
+size = Vector3( 10, 0.5, 10 )
 
 [node name="Spatial" type="Spatial"]
 
@@ -52,7 +54,8 @@ skeleton = NodePath("../../HingeJoint/WippenFuss/Cone")
 material/0 = null
 
 [node name="Ball" type="RigidBody" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 1.41278, 8.77364, 1.689 )
+transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0.782918, 8.774, 0.228989 )
+mass = 2.0
 physics_material_override = SubResource( 11 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
@@ -82,6 +85,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15017, -0.135597 )
 nodes/node_a = NodePath("WippenFuss")
 nodes/node_b = NodePath("Wippe")
 angular_limit/enable = true
+angular_limit/upper = 35.0
+angular_limit/lower = -35.0
+motor/enable = true
+motor/target_velocity = -28.22
+script = ExtResource( 1 )
 
 [node name="WippenFuss" type="StaticBody" parent="HingeJoint"]
 transform = Transform( -5.1162e-08, -4.6566e-10, 1, -1.49012e-08, 1, 9.31323e-10, -1, 2.98023e-08, -5.1162e-08, 0, -1.65293, 0.135597 )
