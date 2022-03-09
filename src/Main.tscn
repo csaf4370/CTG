@@ -55,8 +55,10 @@ material/0 = null
 
 [node name="Ball" type="RigidBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.794934, -0.606696, 0, 0.606696, 0.794934, 0.782918, 8.774, 0.228989 )
-mass = 2.0
+mass = 4.0
 physics_material_override = SubResource( 11 )
+axis_lock_linear_z = true
+axis_lock_angular_x = true
 
 [node name="CollisionShape" type="CollisionShape" parent="Ball"]
 transform = Transform( 1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0, 0 )
@@ -89,7 +91,10 @@ angular_limit/upper = 35.0
 angular_limit/lower = -35.0
 motor/enable = true
 motor/target_velocity = -28.22
+motor/max_impulse = 3.5
 script = ExtResource( 1 )
+kp = 100
+ki = 10
 
 [node name="WippenFuss" type="StaticBody" parent="HingeJoint"]
 transform = Transform( -5.1162e-08, -4.6566e-10, 1, -1.49012e-08, 1, 9.31323e-10, -1, 2.98023e-08, -5.1162e-08, 0, -1.65293, 0.135597 )
@@ -113,3 +118,12 @@ shape = SubResource( 16 )
 [node name="MeshInstance" type="MeshInstance" parent="HingeJoint/Wippe"]
 mesh = SubResource( 17 )
 material/0 = null
+
+[node name="stats" type="RichTextLabel" parent="."]
+margin_right = 209.0
+margin_bottom = 94.0
+rect_scale = Vector2( 4.74235, 2.21251 )
+text = "hallo asdfa sdfa sd"
+__meta__ = {
+"_edit_use_anchors_": false
+}
